@@ -1,4 +1,4 @@
-# SAP-Oriented Explainable AI Decision Layer for IIoT-Driven Operations
+# An Explainable AI Decision Layer for Human-in-the-loop SAP ERP Workflow Integration in Supply Chain Operations
 
 ## Repository Branches
 
