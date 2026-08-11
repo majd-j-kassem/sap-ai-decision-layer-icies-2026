@@ -75,7 +75,12 @@ streamlit run dashboard/sap_dashboard.py
 Dashboard:
 
 http://localhost:8501
+
+```
+```text
+
 Prototype Workflow
+
 Operational Data
         |
         v
@@ -95,12 +100,17 @@ Decision Layer
 SAP-Oriented Workflow Simulation
 Dataset
 
+```
+```
+
+
 The experiments use the DataCo Supply Chain Dataset.
 
 The dataset is excluded from the repository due to size and licensing considerations.
 
 data/DataCoSupplyChainDataset.csv
 Reproducibility
+```
 
 The repository provides:
 
