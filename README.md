@@ -111,8 +111,6 @@ Decision-layer experiments.
 SAP workflow simulation.
 Dashboard prototype.
 
-
-
 | Stage | Script | Objective |
 | :--- | :--- | :--- |
 | **1. Data Understanding** | `01_data_profile.py` | Dataset profiling, quality inspection, and statistical overview |
