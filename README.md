@@ -145,6 +145,22 @@ Decision-layer experiments.
 SAP workflow simulation.
 Dashboard prototype.
 
+Note: The repository contains the complete experimental pipeline used during the research process. However, not all scripts are required to reproduce the final decision-layer prototype. The scripts are organized by research stage, and only the relevant stages need to be executed depending on the reproduction objective.
+
+### Minimal Reproduction Path
+
+For reproducing the main results and SAP decision-layer prototype, the following stages are sufficient:
+
+1. Data Understanding
+2. Feature Screening
+3. Model Training
+4. Model Evaluation
+5. Decision Layer
+6. SAP Integration Prototype
+7. Dashboard Demonstration
+
+The remaining scripts support extended analysis, robustness evaluation, statistical validation, and paper preparation.
+
 | Stage | Script | Objective |
 | :--- | :--- | :--- |
 | **1. Data Understanding** | `01_data_profile.py` | Dataset profiling, quality inspection, and statistical overview |
