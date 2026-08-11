@@ -42,9 +42,10 @@ The dataset is not included in this repository due to size and licensing conside
 
 Download:
 
-https://prod-dcd-datasets-public-files-eu-west-1.s3.eu-west-1.amazonaws.com/b60060a2-e731-4745-8d51-3db158a1add7
+[DataCo Supply Chain Dataset](https://prod-dcd-datasets-public-files-eu-west-1.s3.eu-west-1.amazonaws.com/b60060a2-e731-4745-8d51-3db158a1add7)
 
 After downloading, place the file at:
+data/DataCoSupplyChainDataset.csv
 
 ## Installation
 
