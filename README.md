@@ -82,10 +82,18 @@ API:
 ```bash
 http://127.0.0.1:8000
 ```
-Run Dashboard
+## Running the SAP Decision Dashboard
+![alt text](image.png)
+The project includes an interactive dashboard demonstrating the proposed
+AI-based decision layer for SAP-oriented operational decisions.
 
-Open another terminal:
+### Start Dashboard
 
+Activate the virtual environment:
+
+```bash
+source .venv/bin/activate
+```
 ```bash
 streamlit run dashboard/sap_dashboard.py
 ```
