@@ -19,30 +19,16 @@ The framework includes:
 ## Project Structure
 
 
-2026_ICIES/
-│
-├── dashboard/
-│ └── sap_dashboard.py
-│
-├── src/
-│ ├── api/
-│ │ └── decision_api.py
-│ ├── decision/
-│ ├── models/
-│ └── sap/
-│
-├── models/
-│ ├── xgboost_model.joblib
-│ └── lightgbm_model.joblib
-│
-├── results/
-│
-├── latex/
-│ ├── main.tex
-│ └── references.bib
-│
-└── requirements.txt
+## Project Structure
 
+```text
+2026_ICIES/
+├── data/                  # Dataset (not included)
+├── models/                # Trained ML models
+├── scripts_and_models/    # Experimental scripts
+├── results/               # Experimental outputs
+├── latex/                 # Paper source
+└── dashboard/             # Interactive dashboard
 
 ---
 
