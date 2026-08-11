@@ -204,4 +204,4 @@ pdflatex main2.tex
 pdflatex main2.tex
 ```
 The generated PDF will be:
-main.pdf
+main2.pdf
