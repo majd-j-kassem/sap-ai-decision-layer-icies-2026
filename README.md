@@ -53,29 +53,33 @@ Create environment:
 ```bash
 python -m venv .venv
 source .venv/bin/activate
+```
 
 Install dependencies:
-
+```bash
 pip install -r requirements.txt
+```
 Run Decision API
 
 From project root:
+```bash
 
 uvicorn api.decision_api:app --reload --app-dir src
-
+```
 API:
-
+```bash
 http://127.0.0.1:8000
+```
 Run Dashboard
 
 Open another terminal:
 
+```bash
 streamlit run dashboard/sap_dashboard.py
-
+```
 Dashboard:
-
+```bash
 http://localhost:8501
-
 ```
 ```text
 
