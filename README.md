@@ -30,8 +30,7 @@ The framework includes:
 ├── latex/                 # Paper source
 └── dashboard/             # Interactive dashboard
 
----
-
+```
 ## Dataset
 
 ## Download Dataset at:
