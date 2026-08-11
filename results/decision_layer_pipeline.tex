@@ -1,0 +1,53 @@
+\begin{tikzpicture}[
+node distance=1.5cm,
+every node/.style={
+    draw,
+    rounded corners,
+    align=center,
+    minimum width=3.2cm,
+    minimum height=0.9cm,
+    font=\small
+},
+arrow/.style={->, thick}
+]
+
+\node (data) {
+Data Sources\\
+DataCo Supply Chain Dataset
+};
+
+\node (process) [below=of data] {
+Data Processing Layer\\
+Cleaning \& Feature Engineering
+};
+
+\node (ai) [below=of process] {
+Predictive AI Layer\\
+LightGBM Risk Prediction
+};
+
+\node (decision) [below=of ai] {
+Explainable Decision Layer\\
+Risk State Classification\\
+and Action Recommendation
+};
+
+\node (human) [below=of decision] {
+Human-in-the-loop Layer\\
+Expert Review\\
+Approval / Override
+};
+
+\node (sap) [below=of human] {
+SAP ERP Operational Layer\\
+Workflow Update\\
+Operational Intervention
+};
+
+\draw[arrow] (data) -- (process);
+\draw[arrow] (process) -- (ai);
+\draw[arrow] (ai) -- (decision);
+\draw[arrow] (decision) -- (human);
+\draw[arrow] (human) -- (sap);
+
+\end{tikzpicture}

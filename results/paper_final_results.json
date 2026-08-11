@@ -1,0 +1,41 @@
+{
+  "model_performance": {
+    "best_model": "Random Forest",
+    "roc_auc": 0.7310888094677951,
+    "roc_auc_std": 0.0025548111805858
+  },
+  "risk_effectiveness": {
+    "low_observed_late_rate": 0.3854984636394674,
+    "medium_observed_late_rate": 0.6789043359469265,
+    "high_observed_late_rate": 0.931969991269858,
+    "high_low_absolute_gap": 0.5464715276303906,
+    "high_low_relative_increase": 1.417571220572934
+  },
+  "calibration": {
+    "brier_score": 0.1940684383502767,
+    "expected_calibration_error": 0.0046415218257892
+  },
+  "economic_impact": {
+    "baseline_cost": 9897690.45099349,
+    "decision_cost": 9561435.115096776,
+    "cost_saving": 336255.33589671366,
+    "saving_rate": 0.033973110955693886
+  },
+  "economic_robustness": {
+    "beneficial_scenarios": 30,
+    "total_scenarios": 49,
+    "beneficial_fraction": 0.6122448979591837
+  },
+  "break_even": {
+    "evaluated_scenarios": 7
+  },
+  "sap_workflow": {
+    "cases": 3,
+    "all_final_approved": true
+  },
+  "human_in_the_loop": {
+    "total_evaluated": 36104,
+    "human_intervention_cases": 12672,
+    "intervention_rate": 0.3509860403279415
+  }
+}

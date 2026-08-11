@@ -1,0 +1,36 @@
+\begin{tikzpicture}
+\begin{axis}[
+    ybar,
+    width=0.9\linewidth,
+    height=7cm,
+    ylabel={ROC-AUC},
+    symbolic x coords={
+        CART,
+        Logistic Regression,
+        Random Forest,
+        XGBoost,
+        LightGBM
+    },
+    xtick=data,
+    ymin=0.72,
+    ymax=0.74,
+    nodes near coords,
+    nodes near coords align={vertical},
+    x tick label style={
+        rotate=45,
+        anchor=east
+    },
+    bar width=18pt,
+    grid=major
+]
+
+\addplot coordinates {
+    (CART,0.7300)
+    (Logistic Regression,0.7299)
+    (Random Forest,0.7311)
+    (XGBoost,0.7303)
+    (LightGBM,0.7310)
+};
+
+\end{axis}
+\end{tikzpicture}

@@ -1,0 +1,4 @@
+case,shipping_mode,market,order_region,quantity,price,probability,risk_level,sap_action,human_review,workflow_status,final_status,baseline_expected_cost,decision_cost,expected_saving
+Test Case 1,Same Day,USCA,Canada,1,20.0,0.1309,LOW,SAP_STANDARD_PROCESS,False,AUTO_APPROVED,APPROVED,13.09,13.09,0.0
+Test Case 2,Standard Class,USCA,West of USA,2,59.99,0.382,MEDIUM,SAP_SHIPPING_PLAN_REVIEW,True,PENDING_HUMAN_REVIEW,APPROVED,38.2,48.2,-10.0
+Test Case 3,First Class,Europe,Western Europe,4,250.0,0.9556,HIGH,SAP_ORDER_PRIORITY_REVIEW,True,PENDING_PRIORITY_REVIEW,APPROVED,95.56,67.336,28.224

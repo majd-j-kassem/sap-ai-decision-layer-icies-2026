@@ -1,0 +1,11 @@
+claim,status,evidence
+The predictive model achieves ROC-AUC above 0.70.,SUPPORTED,Best ROC-AUC = 0.7311
+Observed late-delivery rate increases with risk level.,SUPPORTED,Monotonic ordering = True
+HIGH and LOW risk groups show substantial separation.,SUPPORTED,Absolute risk gap = 0.5465
+Risk-level association is statistically significant.,SUPPORTED,Chi-square p-value = 0
+The predictive probabilities demonstrate acceptable calibration.,SUPPORTED,Brier Score = 0.194068; ECE = 0.004642
+The decision layer produces an overall economic saving.,SUPPORTED,"Overall saving = $336,255.34"
+Economic benefit is robust across multiple cost scenarios.,SUPPORTED,Beneficial scenarios = 30/49
+The decision layer has a measurable economic break-even point.,SUPPORTED,Break-even scenarios evaluated = 7
+All evaluated SAP workflow cases reached final approval.,SUPPORTED,All approved = True
+The decision layer supports human-in-the-loop intervention.,SUPPORTED,HITL decisions = 12672 of 36104 observations

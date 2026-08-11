@@ -1,0 +1,5 @@
+experiment,feature_group,features,n_features,mean_roc_auc,std_roc_auc,min_roc_auc,max_roc_auc
+feature_set,Shipping Mode Only,Shipping Mode,1,0.7281540427688229,0.002410439141941064,0.7254641861953911,0.7318407703364689
+feature_set,Shipping + Region,"Shipping Mode, Order Region",2,0.7297961668306687,0.0019118561094179458,0.7271980376577745,0.7329003633825073
+feature_set,All Categorical,"Shipping Mode, Market, Order Region",3,0.7299031678925234,0.0020014859671165903,0.727252257027629,0.7330947274563046
+feature_set,All Features,"Shipping Mode, Market, Order Region, Order Item Quantity, Product Price",5,0.7295668931470229,0.0019522268720458132,0.7268673053869921,0.732726912094988

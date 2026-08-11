@@ -1,0 +1,35 @@
+feature,importance
+cat__Shipping Mode_Standard Class,0.42574089869036313
+cat__Shipping Mode_First Class,0.3550651151515217
+cat__Shipping Mode_Second Class,0.15165306104850865
+cat__Shipping Mode_Same Day,0.038312724098995915
+num__Product Price,0.018786885289418444
+num__Order Item Quantity,0.0050154511231850244
+cat__Order Region_Canada,0.0004291213306903943
+cat__Order Region_Caribbean,0.0004170193092914842
+cat__Order Region_Central Asia,0.000329769883458673
+cat__Order Region_Southern Europe,0.0003172933306933801
+cat__Order Region_Central Africa,0.0003052912568799291
+cat__Order Region_South America,0.00027310210251565113
+cat__Order Region_Oceania,0.0002649134655432487
+cat__Order Region_Western Europe,0.0002369910049751656
+cat__Order Region_West Africa,0.00020559813535999676
+cat__Market_LATAM,0.00019797030507109965
+cat__Order Region_North Africa,0.00019315805206703053
+cat__Order Region_East of USA,0.00019160629480766104
+cat__Order Region_Northern Europe,0.00017449100219498365
+cat__Order Region_Central America,0.00017115917352792707
+cat__Order Region_Eastern Europe,0.00016548675692302532
+cat__Order Region_Southern Africa,0.00016394235830355825
+cat__Order Region_South of  USA ,0.00015617761724483775
+cat__Order Region_Eastern Asia,0.0001521208137521189
+cat__Order Region_US Center ,0.0001471351797129777
+cat__Order Region_South Asia,0.00014268283935174508
+cat__Order Region_Southeast Asia,0.00013850193249212306
+cat__Order Region_West of USA ,0.0001184366859241085
+cat__Market_Africa,0.00011180744036478746
+cat__Market_Pacific Asia,0.00010760755633290166
+cat__Market_Europe,9.463549118982078e-05
+cat__Order Region_West Asia,8.176814136970466e-05
+cat__Order Region_East Africa,7.116783549279838e-05
+cat__Market_USCA,6.690930247597013e-05

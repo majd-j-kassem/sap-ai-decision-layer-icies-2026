@@ -1,0 +1,64 @@
+{
+  "model_performance": {
+    "best_roc_auc_model": "Random Forest",
+    "best_roc_auc": 0.7310888094677951,
+    "best_pr_auc_model": "XGBoost",
+    "best_pr_auc": 0.8007834644536432
+  },
+  "decision_effectiveness": {
+    "low_late_rate": 0.3854984636394674,
+    "high_late_rate": 0.931969991269858,
+    "absolute_risk_gap": 0.5464715276303906,
+    "relative_increase": 1.4175712205729343,
+    "monotonic_risk_order": true,
+    "chi_square": 6657.906902594175,
+    "chi_square_p_value": 0.0
+  },
+  "calibration": {
+    "model": "LightGBM",
+    "brier_score": 0.1940684383502767,
+    "expected_calibration_error": 0.0046415218257892,
+    "test_samples": 36104.0
+  },
+  "economic_impact": {
+    "baseline_cost": 9897690.45099349,
+    "decision_cost": 9561435.115096776,
+    "cost_saving": 336255.33589671366,
+    "saving_rate": 0.033973110955693886
+  },
+  "economic_sensitivity": {
+    "beneficial_scenarios": 30,
+    "total_scenarios": 49,
+    "beneficial_percentage": 0.6122448979591837
+  },
+  "break_even": [
+    {
+      "late_delivery_cost": 50,
+      "maximum_profitable_intervention_cost": 5
+    },
+    {
+      "late_delivery_cost": 100,
+      "maximum_profitable_intervention_cost": 10
+    },
+    {
+      "late_delivery_cost": 150,
+      "maximum_profitable_intervention_cost": 10
+    },
+    {
+      "late_delivery_cost": 200,
+      "maximum_profitable_intervention_cost": 20
+    },
+    {
+      "late_delivery_cost": 300,
+      "maximum_profitable_intervention_cost": 30
+    },
+    {
+      "late_delivery_cost": 500,
+      "maximum_profitable_intervention_cost": 50
+    },
+    {
+      "late_delivery_cost": 1000,
+      "maximum_profitable_intervention_cost": 100
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+feature,importance,relative_importance
+numeric__Product Price,2986,0.33874078275666475
+numeric__Order Item Quantity,1547,0.17549631310266592
+categorical__Shipping Mode_Same Day,370,0.04197390811117414
+categorical__Shipping Mode_Second Class,362,0.04106636415201361
+categorical__Shipping Mode_Standard Class,347,0.039364719228587634
+categorical__Shipping Mode_First Class,251,0.028474191718661373
+categorical__Order Region_Western Europe,187,0.021213840045377196
+categorical__Order Region_Oceania,182,0.020646625070901873
+categorical__Order Region_South America,179,0.020306296086216678
+categorical__Order Region_Southern Europe,179,0.020306296086216678
+categorical__Order Region_Central Asia,136,0.015428247305728872
+categorical__Order Region_Central Africa,129,0.014634146341463415
+categorical__Order Region_East of USA,118,0.013386273397617696
+categorical__Order Region_West of USA ,111,0.01259217243335224
+categorical__Order Region_Eastern Asia,108,0.012251843448667045
+categorical__Order Region_Northern Europe,104,0.011798071469086784
+categorical__Order Region_Canada,104,0.011798071469086784
+categorical__Order Region_North Africa,102,0.011571185479296654
+categorical__Order Region_Southeast Asia,99,0.011230856494611459
+categorical__Order Region_US Center ,99,0.011230856494611459
+categorical__Order Region_West Africa,97,0.011003970504821327
+categorical__Order Region_South of  USA ,92,0.010436755530346
+categorical__Market_Africa,91,0.010323312535450936
+categorical__Order Region_East Africa,91,0.010323312535450936
+categorical__Order Region_Caribbean,90,0.01020986954055587
+categorical__Order Region_South Asia,89,0.010096426545660805
+categorical__Order Region_Southern Africa,85,0.009642654566080544
+categorical__Order Region_Eastern Europe,78,0.008848553601815088
+categorical__Market_Pacific Asia,77,0.008735110606920022
+categorical__Order Region_West Asia,76,0.008621667612024958
+categorical__Market_Europe,68,0.007714123652864436
+categorical__Market_LATAM,64,0.007260351673284175
+categorical__Order Region_Central America,62,0.007033465683494044
+categorical__Market_USCA,55,0.006239364719228588

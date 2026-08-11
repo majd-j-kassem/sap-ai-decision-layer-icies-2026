@@ -1,0 +1,18 @@
+\resizebox{\columnwidth}{!}{
+\begin{tabular}{lllrrrr}
+\toprule
+analysis & model & metric & mean & std & min & max \\
+\midrule
+Cross-Validation & Random Forest & ROC-AUC & 0.7311 & 0.0026 & 0.7275 & 0.7357 \\
+Cross-Validation & CART & ROC-AUC & 0.7300 & 0.0026 & 0.7251 & 0.7347 \\
+Cross-Validation & Logistic Regression & ROC-AUC & 0.7299 & 0.0030 & 0.7264 & 0.7373 \\
+Gradient Boosting & XGBoost & ROC-AUC & 0.7303 & 0.0041 & NaN & NaN \\
+Gradient Boosting & XGBoost & PR-AUC & 0.8008 & 0.0032 & NaN & NaN \\
+Gradient Boosting & LightGBM & ROC-AUC & 0.7300 & 0.0044 & NaN & NaN \\
+Gradient Boosting & LightGBM & PR-AUC & 0.8005 & 0.0035 & NaN & NaN \\
+Random Seed Robustness & Logistic Regression & ROC-AUC & 0.7296 & 0.0003 & 0.7291 & 0.7300 \\
+Random Seed Robustness & CART & ROC-AUC & 0.7300 & 0.0004 & 0.7296 & 0.7304 \\
+Random Seed Robustness & Random Forest & ROC-AUC & 0.7310 & 0.0003 & 0.7305 & 0.7313 \\
+\bottomrule
+\end{tabular}
+}

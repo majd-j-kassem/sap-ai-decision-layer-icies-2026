@@ -1,0 +1,34 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+
+# LaTeX temporary files
+*.aux
+*.log
+*.out
+*.bbl
+*.blg
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+
+# Generated files
+# keep final paper PDF
+main.pdf
+
+# OS
+.DS_Store
+
+# Large datasets
+data/*.csv
+
+# Backup folders
+scripts_and_models_backup/
+# Results generated files
+results/*.pdf
+results/*.png
+
+# LaTeX release artifacts
+latex/release/

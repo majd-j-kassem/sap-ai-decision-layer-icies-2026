@@ -1,0 +1,8 @@
+claim,status,evidence
+The predictive model achieves ROC-AUC above 0.70.,SUPPORTED,Best ROC-AUC = 0.7311
+Observed late-delivery rate increases with risk level.,SUPPORTED,Monotonic ordering = True
+The HIGH and LOW risk groups show substantial separation.,SUPPORTED,Absolute gap = 0.5465
+Risk-level association is statistically significant.,SUPPORTED,Chi-square p-value = 0
+The decision layer produces an overall economic saving under the evaluated cost structure.,SUPPORTED,"Baseline = $9,897,690.45; Decision = $9,561,435.12; Saving = $336,255.34"
+The economic benefit is robust across multiple cost scenarios.,SUPPORTED,Beneficial scenarios = 30/49
+All evaluated SAP workflow cases reached a final approved state.,SUPPORTED,All approved = True

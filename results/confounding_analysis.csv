@@ -1,0 +1,5 @@
+model,features,n_features,cv_roc_auc_mean,cv_roc_auc_std
+Shipping Mode only,Shipping Mode,1,0.7281540427688229,0.002410439141941064
+Shipping Mode + Market,"Shipping Mode, Market",2,0.728343031955241,0.002632808181573264
+Shipping Mode + Market + Region,"Shipping Mode, Market, Order Region",3,0.7299031678925234,0.0020014859671165903
+Full adjusted model,"Shipping Mode, Market, Order Region, Order Item Quantity, Product Price",5,0.7295668931470229,0.0019522268720458132

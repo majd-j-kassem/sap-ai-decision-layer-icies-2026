@@ -1,0 +1,12 @@
+{
+  "timestamp": "2026-08-10T14:39:36.195157+00:00",
+  "system": "SAP_ERP",
+  "interface": "PREDICTIVE_DECISION_LAYER",
+  "event_type": "DELIVERY_RISK_DECISION",
+  "order_id": "77202",
+  "predicted_risk_probability": 0.351743,
+  "risk_level": "LOW",
+  "decision": "NO_ACTION",
+  "sap_action": "SAP_STANDARD_PROCESS",
+  "status": "SIMULATED"
+}
