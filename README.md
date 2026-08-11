@@ -83,7 +83,8 @@ API:
 http://127.0.0.1:8000
 ```
 ## Running the SAP Decision Dashboard
-![alt text](image.png)
+![SAP Decision Dashboard](docs/image.png)
+
 The project includes an interactive dashboard demonstrating the proposed
 AI-based decision layer for SAP-oriented operational decisions.
 
