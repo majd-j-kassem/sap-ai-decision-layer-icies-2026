@@ -1,5 +1,17 @@
 # SAP-Oriented Explainable AI Decision Layer for IIoT-Driven Operations
 
+## Repository Branches
+
+This repository follows a two-branch workflow:
+
+- `main`: Stable release branch containing the validated version.However , it isn't ready yet
+- `development`: Active research and implementation branch containing the latest AI decision layer prototype, SAP integration prototype, dashboard, and experimental updates.
+
+For reproduction and evaluation of the proposed framework, use:
+
+```bash
+git checkout development
+
 ## Overview
 
 This repository contains the experimental prototype developed for ICIES 2026.
