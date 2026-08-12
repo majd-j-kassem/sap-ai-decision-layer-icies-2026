@@ -104,7 +104,7 @@ git clone https://github.com/majd-j-kassem/sap-ai-decision-layer-icies-2026.git
 cd sap-ai-decision-layer-icies-2026
 
 # 3. Create an isolated virtual environment (.venv)
-python -m venv .venv
+python3 -m venv .venv
 
 # 4. Activate the virtual environment
 # On Linux/macOS:
