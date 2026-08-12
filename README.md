@@ -80,7 +80,7 @@ The experimental pipeline utilizes the publicly available **DataCo Supply Chain 
 
 ### Setup Instructions:
 1. **Download** the raw data from the official source:
-   [DataCo Dataset Download Link](https://prod-dcd-datasets-public-files-eu-west-1.amazonaws.com/b60060a2-e731-4745-8d51-3db158a1add7)
+   [DataCo Dataset Download Link](https://data.mendeley.com/public-files/datasets/8gx2fvg2k6/files/72784be5-36d3-44fe-b75d-0edbf1999f65/file_downloaded)
 2. **Place** the unzipped CSV file exactly at the following path:
    ```bash
    data/DataCoSupplyChainDataset.csv
@@ -123,9 +123,25 @@ pip install -r requirements.txt
 
 ---
 
+---
+
 ## 🧪 Running Experiments
 
 The research execution pipeline is modularized into sequential steps. Execute them from the project root directory.
+
+### 📜 Prerequisites: Data Setup
+Before running any script, you must manually create the data directory and fetch the raw dataset, otherwise a `FileNotFoundError` will be thrown.
+
+```bash
+# 1. Create the data directory under the project root
+mkdir -p data
+
+# 2. Download the official DataCo Supply Chain Dataset directly from Mendeley Data
+# Link: https://data.mendeley.com/public-files/datasets/8gx2fvg2k6/files/72784be5-36d3-44fe-b75d-0edbf1999f65/file_downloaded
+
+# 3. Ensure the downloaded file is unzipped (if applicable) and renamed exactly to:
+# data/DataCoSupplyChainDataset.csv
+```
 
 ### 1. Data Understanding & Profiling
 Generates descriptive dataset statistics, missing-value distributions, and target variable balances.
