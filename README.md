@@ -1,65 +1,223 @@
-# An Explainable Human-in-the-loop AI Decision Layer for SAP ERP Integration Using IIoT Data
+# An Explainable AI Decision Layer for Human-in-the-loop SAP ERP Workflow Integration in Supply Chain Operations
+
+## Repository Branches
+
+This repository follows a two-branch workflow:
+
+- `main`: Stable release branch containing the validated version.However , it isn't ready yet
+- `development`: Active research and implementation branch containing the latest AI decision layer prototype, SAP integration prototype, dashboard, and experimental updates.
+
+For reproduction and evaluation of the proposed framework, use:
+
+```bash
+git checkout development
 
 ## Overview
-This repository contains the experimental implementation of an AI-based decision layer designed to bridge machine learning predictions with SAP-oriented enterprise workflows.
 
-The framework integrates:
-- Predictive analytics
-- Risk-based decision logic
-- Human-in-the-loop control
-- SAP workflow simulation
-- Economic impact evaluation
+This repository contains the experimental prototype developed for ICIES 2026.
+
+The work proposes an explainable human-in-the-loop AI decision layer that connects machine learning predictions with SAP-oriented workflow simulation.
+
+The framework includes:
+
+- Predictive ML models for operational risk estimation.
+- Risk-based decision layer.
+- Human review escalation mechanism.
+- SAP workflow simulation.
+- Interactive Streamlit dashboard.
+
+---
 
 ## Project Structure
 
 
+## Project Structure
+
+```text
 2026_ICIES/
-├── data/ # Dataset (not included)
-├── models/ # Trained ML models
-├── scripts_and_models/ # Experimental scripts
-├── results/ # Experimental outputs
-├── latex/ # Paper source
-└── dashboard/ # Interactive dashboard
+├── data/                  # Dataset (not included)
+├── models/                # Trained ML models
+├── scripts_and_models/    # Experimental scripts
+├── results/               # Experimental outputs
+├── latex/                 # Paper source
+└── dashboard/             # Interactive dashboard
 
+```
+## Dataset
 
-## Environment Setup
+## Download Dataset at:
+
+The experiments use the DataCo Supply Chain Dataset.
+
+The dataset is not included in this repository due to size and licensing considerations.
+
+Download:
+
+[DataCo Supply Chain Dataset](https://prod-dcd-datasets-public-files-eu-west-1.s3.eu-west-1.amazonaws.com/b60060a2-e731-4745-8d51-3db158a1add7)
+
+After downloading, place the file at:
+data/DataCoSupplyChainDataset.csv
+
+## Installation
+
+Create environment:
 
 ```bash
 python -m venv .venv
 source .venv/bin/activate
+```
+
+Install dependencies:
+```bash
 pip install -r requirements.txt
-Running the Decision API
-cd scripts_and_models
-uvicorn decision_api:app --reload
+```
+Run Decision API
 
-API endpoint:
+From project root:
+```bash
 
+uvicorn api.decision_api:app --reload --app-dir src
+```
+API:
+```bash
 http://127.0.0.1:8000
-Running the Dashboard
-cd scripts_and_models
-streamlit run sap_dashboard.py
+```
+## Running the SAP Decision Dashboard
+![SAP Decision Dashboard](docs/image.png)
 
+The project includes an interactive dashboard demonstrating the proposed
+AI-based decision layer for SAP-oriented operational decisions.
+
+### Start Dashboard
+
+Activate the virtual environment:
+
+```bash
+source .venv/bin/activate
+```
+```bash
+streamlit run dashboard/sap_dashboard.py
+```
 Dashboard:
-
+```bash
 http://localhost:8501
-Models
+```
+```text
 
-The repository includes trained:
+Prototype Workflow
 
-XGBoost model
-LightGBM model
-Research Outputs
+Operational Data
+        |
+        v
+Machine Learning Model
+        |
+        v
+Risk Assessment
+        |
+        v
+Decision Layer
+        |
+        +---- Low Risk --> Automated Action
+        |
+        +---- Medium/High Risk --> Human Review
+        |
+        v
+SAP-Oriented Workflow Simulation
+Dataset
 
-The results/ directory contains:
+```
+```
 
-Model evaluation
-Calibration analysis
-Robustness analysis
-Human-in-the-loop evaluation
-SAP workflow simulation
-Economic impact analysis
-Paper
 
-The IEEE conference paper source is available in:
+The experiments use the DataCo Supply Chain Dataset.
 
-latex/main.tex
+The dataset is excluded from the repository due to size and licensing considerations.
+
+data/DataCoSupplyChainDataset.csv
+Reproducibility
+```
+
+The repository provides:
+
+Model training scripts.
+Evaluation experiments.
+Decision-layer experiments.
+SAP workflow simulation.
+Dashboard prototype.
+
+Note: The repository contains the complete experimental pipeline used during the research process. However, not all scripts are required to reproduce the final decision-layer prototype. The scripts are organized by research stage, and only the relevant stages need to be executed depending on the reproduction objective.
+
+### Minimal Reproduction Path
+
+For reproducing the main results and SAP decision-layer prototype, the following stages are sufficient:
+
+1. Data Understanding
+2. Feature Screening
+3. Model Training
+4. Model Evaluation
+5. Decision Layer
+6. SAP Integration Prototype
+7. Dashboard Demonstration
+
+The remaining scripts support extended analysis, robustness evaluation, statistical validation, and paper preparation.
+
+| Stage | Script | Objective |
+| :--- | :--- | :--- |
+| **1. Data Understanding** | `01_data_profile.py` | Dataset profiling, quality inspection, and statistical overview |
+| **2. Relationship Analysis** | `02_relationship_tests.py` | Analyze relationships between operational variables and target outcome |
+| **3. Feature Engineering** | `03_feature_screening.py` | Identify relevant predictive features and remove weak variables |
+| **4. Baseline Modeling** | `04_model_training.py` | Train baseline machine-learning models |
+| **5. Model Diagnostics** | `05_model_diagnostics.py` | Evaluate model behavior, errors, and performance characteristics |
+| **6. Feature Contribution Analysis** | `06_feature_ablation.py` | Measure the effect of removing features on model performance |
+| **7. Hybrid Modeling** | `06_kalman_hybrid.py` | Develop Kalman-filter-enhanced hybrid prediction approach |
+| **8. Statistical Validation** | `07_confounding_analysis.py`, `08_statistical_validation.py` | Validate robustness and statistical significance |
+| **9. Advanced Models** | `09_xgboost_lightgbm.py` | Train and compare advanced gradient boosting models |
+| **10. Explainability** | `10_model_interpretation.py` | Generate feature importance and explain model decisions |
+| **11. Robustness Testing** | `11_robustness_analysis.py` | Evaluate stability across samples and seeds |
+| **12. Decision Layer** | `12_decision_layer.py` | Transform predictions into risk-based operational decisions |
+| **13. SAP Integration Prototype** | `13_sap_integration_prototype.py` | Simulate integration between AI outputs and SAP workflows |
+| **14. Human-in-the-loop** | `14_human_in_the_loop.py` | Implement selective escalation for human review |
+| **15. Decision Evaluation** | `17_decision_effectiveness.py` | Measure decision-layer effectiveness |
+| **16. Calibration Analysis** | `18_calibration_analysis.py` | Evaluate prediction confidence calibration |
+| **17. Economic Evaluation** | `19_cost_sensitive_analysis.py` | Analyze cost impact, optimization, and break-even points |
+| **18. SAP Workflow Simulation** | `24_sap_workflow_simulation.py` | Demonstrate enterprise workflow execution logic |
+| **19. Architecture Visualization** | `25_sap_architecture_diagram.py` | Generate SAP-oriented architecture representation |
+| **20. End-to-End Validation** | `26_end_to_end_evaluation.py` | Validate complete framework performance |
+| **21. Paper Preparation** | `29_results_visualization.py` | Generate figures, tables, and final manuscript results |
+
+### Output Files
+
+The outputs generated by the experimental scripts are saved in the
+`results/` directory. These include intermediate analysis results,
+model evaluation metrics, statistical validation results, decision-layer
+outputs, SAP integration outputs, and publication-ready tables and figures.
+
+The scripts are designed to preserve the experimental outputs separately
+from the source code and trained models.
+## Paper Reproduction
+
+The paper PDF can be reproduced from the LaTeX source files located in:
+
+
+latex/
+### Requirements
+
+A LaTeX distribution is required, such as TeX Live.
+
+### Build Instructions
+
+Navigate to the LaTeX directory:
+
+```bash
+cd latex/release
+```
+Compile the paper:
+```bash
+
+pdflatex main2.tex
+bibtex main2
+pdflatex main2.tex
+pdflatex main2.tex
+```
+The generated PDF will be:
+main2.pdf
