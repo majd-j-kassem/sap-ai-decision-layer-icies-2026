@@ -16,7 +16,6 @@ __pycache__/
 
 # Generated files
 # keep final paper PDF
-main.pdf
 
 # OS
 .DS_Store
@@ -27,8 +26,9 @@ data/*.csv
 # Backup folders
 scripts_and_models_backup/
 # Results generated files
-results/*.pdf
-results/*.png
 
 # LaTeX release artifacts
-latex/release/
+
+
+# Generated analysis CSV files
+results/*.csv
