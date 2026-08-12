@@ -1,223 +1,226 @@
 # An Explainable AI Decision Layer for Human-in-the-loop SAP ERP Workflow Integration in Supply Chain Operations
 
-## Repository Branches
+[![Conference](https://shields.io)](http://icies-conference.org)
+[![Python](https://shields.io)](https://python.org)
+[![Framework](https://shields.io)](https://streamlit.io)
 
-This repository follows a two-branch workflow:
+## 📌 Repository Status
 
-- `main`: Stable release branch containing the validated version.However , it isn't ready yet
-- `development`: Active research and implementation branch containing the latest AI decision layer prototype, SAP integration prototype, dashboard, and experimental updates.
+This repository contains the official research prototype developed for the **ICIES 2026** conference. 
 
-For reproduction and evaluation of the proposed framework, use:
+The `main` branch includes the comprehensive replication package:
+* 🧪 **Experimental Scripts:** Full data pipelines and statistical tests.
+* 🤖 **Trained Models:** Serialized machine learning artifacts.
+* 📊 **Evaluation Results:** Raw outputs, calibration curves, and figures.
+* ⚙️ **SAP-Oriented Workflow:** Simulation engine for enterprise integration.
+* 🖥️ **Dashboard Prototype:** Interactive Streamlit interface.
+* 📝 **LaTeX Source:** Complete academic paper source files.
 
-```bash
-git checkout development
-
-## Overview
-
-This repository contains the experimental prototype developed for ICIES 2026.
-
-The work proposes an explainable human-in-the-loop AI decision layer that connects machine learning predictions with SAP-oriented workflow simulation.
-
-The framework includes:
-
-- Predictive ML models for operational risk estimation.
-- Risk-based decision layer.
-- Human review escalation mechanism.
-- SAP workflow simulation.
-- Interactive Streamlit dashboard.
+> ⚠️ **Note:** This repository is intended strictly for research reproducibility and prototype demonstration. The implementation represents an experimental framework and not a production-grade SAP deployment.
 
 ---
 
-## Project Structure
+## 🔍 Overview
 
+This framework bridges the gap between predictive machine learning and operational enterprise workflows. It introduces an **Explainable AI (XAI) decision layer** for supply chain risk management, connecting raw delivery risk probabilities to structured, cost-sensitive downstream actions.
 
-## Project Structure
+### Core Capabilities:
+* **Risk Stratification:** Classifies delivery risks into actionable operational states.
+* **Human-in-the-Loop (HITL):** Escalation mechanisms for high-uncertainty decisions.
+* **Cost-Sensitive Evaluation:** Economic assessment of intervention policies vs. business-as-usual.
+* **SAP Workflow Simulation:** Direct mapping of AI explanations to standard SAP ERP status codes.
+
+---
+
+## 📂 Project Structure
 
 ```text
 2026_ICIES/
-├── data/                  # Dataset (not included)
-├── models/                # Trained ML models
-├── scripts_and_models/    # Experimental scripts
-├── results/               # Experimental outputs
-├── latex/                 # Paper source
-└── dashboard/             # Interactive dashboard
-
+│
+├── data/
+│   └── DataCoSupplyChainDataset.csv  # External dataset (must be downloaded)
+│
+├── models/
+│   ├── lightgbm_model.joblib
+│   └── xgboost_model.joblib
+│
+├── scripts_and_models/
+│   ├── 01_data_profile.py
+│   ├── 02_relationship_tests.py
+│   ├── 03_feature_screening.py
+│   ├── 04_model_training.py
+│   ├── 09_xgboost_lightgbm.py
+│   ├── 12_decision_layer.py
+│   ├── 13_sap_integration_prototype.py
+│   └── 34_paper_final_results.py
+│
+├── src/
+│   ├── api/                          # FastAPI endpoints for decision routing
+│   ├── decision/                     # Logic for risk stratification & cost optimization
+│   ├── models/                       # Inference wrappers and explainers
+│   └── sap/                          # SAP IDoc and workflow mapping simulation
+│
+├── dashboard/
+│   └── sap_dashboard.py              # Streamlit interactive UI
+│
+├── results/                          # Generated plots, metrics, and tables
+│
+├── latex/
+│   └── release/                      # Academic paper source files
+│
+├── requirements.txt                  # Python dependencies
+└── README.md                         # Repository documentation
 ```
-## Dataset
 
-## Download Dataset at:
+---
 
-The experiments use the DataCo Supply Chain Dataset.
+## 📊 Dataset
 
-The dataset is not included in this repository due to size and licensing considerations.
+The experimental pipeline utilizes the publicly available **DataCo Supply Chain Dataset**. Due to file size limitations and licensing constraints, the dataset is not hosted directly in this repository.
 
-Download:
+### Setup Instructions:
+1. **Download** the raw data from the official source:
+   [DataCo Dataset Download Link](https://prod-dcd-datasets-public-files-eu-west-1.amazonaws.com/b60060a2-e731-4745-8d51-3db158a1add7)
+2. **Place** the unzipped CSV file exactly at the following path:
+   ```bash
+   data/DataCoSupplyChainDataset.csv
+   ```
 
-[DataCo Supply Chain Dataset](https://prod-dcd-datasets-public-files-eu-west-1.s3.eu-west-1.amazonaws.com/b60060a2-e731-4745-8d51-3db158a1add7)
+*All downstream experimental tables, figures, and evaluation logs can be deterministically regenerated from this file.*
 
-After downloading, place the file at:
-data/DataCoSupplyChainDataset.csv
+---
 
-## Installation
+---
 
-Create environment:
+## 🛠️ Installation & Setup
+
+Follow these steps to clone the repository, set up an isolated virtual environment, and install the required dependencies directly from the project root:
 
 ```bash
+# 1. Clone the repository from GitHub
+git clone https://github.com/majd-j-kassem/sap-ai-decision-layer-icies-2026.git
+
+# 2. Navigate to the project root directory
+cd sap-ai-decision-layer-icies-2026
+
+# 3. Create an isolated virtual environment (.venv)
 python -m venv .venv
-source .venv/bin/activate
-```
 
-Install dependencies:
-```bash
+# 4. Activate the virtual environment
+# On Linux/macOS:
+source .venv/bin/activate
+# On Windows (Command Prompt):
+.venv\Scripts\activate
+# On Windows (PowerShell):
+.venv\Scripts\Activate.ps1
+
+# 5. Upgrade pip and install all required dependencies
+pip install --upgrade pip
 pip install -r requirements.txt
 ```
-Run Decision API
 
-From project root:
+> 💡 **Tip:** Always ensure that your terminal prompt shows `(.venv)` before executing any experimental scripts or launching the dashboard to guarantee that dependencies are read from the local environment.
+
+---
+
+## 🧪 Running Experiments
+
+The research execution pipeline is modularized into sequential steps. Execute them from the project root directory.
+
+### 1. Data Understanding & Profiling
+Generates descriptive dataset statistics, missing-value distributions, and target variable balances.
 ```bash
-
-uvicorn api.decision_api:app --reload --app-dir src
+python scripts_and_models/01_data_profile.py
 ```
-API:
+
+### 2. Statistical Analysis
+Performs categorical relationship tests and Chi-Square (\(\chi^2\)) statistical validations.
 ```bash
-http://127.0.0.1:8000
+python scripts_and_models/02_relationship_tests.py
 ```
-## Running the SAP Decision Dashboard
-![SAP Decision Dashboard](docs/image.png)
 
-The project includes an interactive dashboard demonstrating the proposed
-AI-based decision layer for SAP-oriented operational decisions.
+### 3. Feature Screening
+Identifies and filters relevant operational variables used as features in predictive modeling.
+```bash
+python scripts_and_models/03_feature_screening.py
+```
 
-### Start Dashboard
+### 4. Model Training & Evaluation
+Trains and compares benchmarks (CART, Logistic Regression, Random Forest) against advanced gradient boosters (XGBoost, LightGBM).
+```bash
+python scripts_and_models/04_model_training.py
+python scripts_and_models/09_xgboost_lightgbm.py
+```
 
-Activate the virtual environment:
+### 5. Decision Layer & Workflow Simulation
+Generates risk states, maps operational policies, triggers HITL escalations, and outputs simulated SAP-compatible logs.
+```bash
+python scripts_and_models/12_decision_layer.py
+python scripts_and_models/13_sap_integration_prototype.py
+```
+
+---
+
+## 🚀 Serving the Prototype
+
+### 1. Decision API (FastAPI)
+The repository includes an API microservice demonstrating how predictions are served and translated into operational decision states.
+
+```bash
+# Activate environment and launch the server
+source .venv/bin/activate
+uvicorn src.api.decision_api:app --reload
+```
+* **Interactive Docs URL:** [http://127.0.0](http://127.0.0)
+
+### 2. SAP Decision Dashboard (Streamlit)
+To explore the interactive, human-in-the-loop simulation UI:
 
 ```bash
 source .venv/bin/activate
-```
-```bash
 streamlit run dashboard/sap_dashboard.py
 ```
-Dashboard:
+* **Local Web URL:** [http://localhost:8501](http://localhost:8501)
+* **Features:** Dynamic risk category adjustment, SHAP explanation rendering, and human override logs.
+
+---
+
+## 📈 Paper Reproduction (LaTeX)
+
+To compile the LaTeX source files of the paper, ensure you have a standard distribution installed (e.g., TeX Live, MiKTeX).
+
 ```bash
-http://localhost:8501
+cd latex/release/
+latexmk -pdf paper_file.tex
 ```
+The compiled output will be generated as `paper_file.pdf`.
+
+---
+
+## 🔄 Complete Replication Workflow
+
+For an end-to-end exact reproduction of the study results, follow this sequential execution pathway:
+
 ```text
-
-Prototype Workflow
-
-Operational Data
-        |
-        v
-Machine Learning Model
-        |
-        v
-Risk Assessment
-        |
-        v
-Decision Layer
-        |
-        +---- Low Risk --> Automated Action
-        |
-        +---- Medium/High Risk --> Human Review
-        |
-        v
-SAP-Oriented Workflow Simulation
-Dataset
-
-```
+[1. Download Dataset] ──> [2. Data Profiling] ──> [3. Feature Screening]
+                                                         │
+                                                         ▼
+[6. Risk Stratification] <── [5. Model Calibration] <── [4. Model Training]
+         │
+         ▼
+[7. Decision Policies] ──> [8. HITL Evaluation] ──> [9. Cost Analysis]
+                                                         │
+                                                         ▼
+                                             [10. Regenerate Paper Plots]
 ```
 
+---
 
-The experiments use the DataCo Supply Chain Dataset.
+## 🛑 Research Limitations
 
-The dataset is excluded from the repository due to size and licensing considerations.
+* **Simulation Scope:** The SAP integration component is implemented as a high-fidelity workflow simulation mapping variables to logical enterprise pathways. It does **not** feature a live NetWeaver/RFC connection to a production SAP instance.
+* **Economic Assumptions:** The cost-benefit matrix and financial saving metrics (e.g., the reported 3.40% operational saving) are evaluated using fixed parameter cost profiles detailed in the paper. True organizational cost reductions will scale dynamically based on individual corporate SLA penalties and mitigation costs.
 
-data/DataCoSupplyChainDataset.csv
-Reproducibility
-```
+---
 
-The repository provides:
-
-Model training scripts.
-Evaluation experiments.
-Decision-layer experiments.
-SAP workflow simulation.
-Dashboard prototype.
-
-Note: The repository contains the complete experimental pipeline used during the research process. However, not all scripts are required to reproduce the final decision-layer prototype. The scripts are organized by research stage, and only the relevant stages need to be executed depending on the reproduction objective.
-
-### Minimal Reproduction Path
-
-For reproducing the main results and SAP decision-layer prototype, the following stages are sufficient:
-
-1. Data Understanding
-2. Feature Screening
-3. Model Training
-4. Model Evaluation
-5. Decision Layer
-6. SAP Integration Prototype
-7. Dashboard Demonstration
-
-The remaining scripts support extended analysis, robustness evaluation, statistical validation, and paper preparation.
-
-| Stage | Script | Objective |
-| :--- | :--- | :--- |
-| **1. Data Understanding** | `01_data_profile.py` | Dataset profiling, quality inspection, and statistical overview |
-| **2. Relationship Analysis** | `02_relationship_tests.py` | Analyze relationships between operational variables and target outcome |
-| **3. Feature Engineering** | `03_feature_screening.py` | Identify relevant predictive features and remove weak variables |
-| **4. Baseline Modeling** | `04_model_training.py` | Train baseline machine-learning models |
-| **5. Model Diagnostics** | `05_model_diagnostics.py` | Evaluate model behavior, errors, and performance characteristics |
-| **6. Feature Contribution Analysis** | `06_feature_ablation.py` | Measure the effect of removing features on model performance |
-| **7. Hybrid Modeling** | `06_kalman_hybrid.py` | Develop Kalman-filter-enhanced hybrid prediction approach |
-| **8. Statistical Validation** | `07_confounding_analysis.py`, `08_statistical_validation.py` | Validate robustness and statistical significance |
-| **9. Advanced Models** | `09_xgboost_lightgbm.py` | Train and compare advanced gradient boosting models |
-| **10. Explainability** | `10_model_interpretation.py` | Generate feature importance and explain model decisions |
-| **11. Robustness Testing** | `11_robustness_analysis.py` | Evaluate stability across samples and seeds |
-| **12. Decision Layer** | `12_decision_layer.py` | Transform predictions into risk-based operational decisions |
-| **13. SAP Integration Prototype** | `13_sap_integration_prototype.py` | Simulate integration between AI outputs and SAP workflows |
-| **14. Human-in-the-loop** | `14_human_in_the_loop.py` | Implement selective escalation for human review |
-| **15. Decision Evaluation** | `17_decision_effectiveness.py` | Measure decision-layer effectiveness |
-| **16. Calibration Analysis** | `18_calibration_analysis.py` | Evaluate prediction confidence calibration |
-| **17. Economic Evaluation** | `19_cost_sensitive_analysis.py` | Analyze cost impact, optimization, and break-even points |
-| **18. SAP Workflow Simulation** | `24_sap_workflow_simulation.py` | Demonstrate enterprise workflow execution logic |
-| **19. Architecture Visualization** | `25_sap_architecture_diagram.py` | Generate SAP-oriented architecture representation |
-| **20. End-to-End Validation** | `26_end_to_end_evaluation.py` | Validate complete framework performance |
-| **21. Paper Preparation** | `29_results_visualization.py` | Generate figures, tables, and final manuscript results |
-
-### Output Files
-
-The outputs generated by the experimental scripts are saved in the
-`results/` directory. These include intermediate analysis results,
-model evaluation metrics, statistical validation results, decision-layer
-outputs, SAP integration outputs, and publication-ready tables and figures.
-
-The scripts are designed to preserve the experimental outputs separately
-from the source code and trained models.
-## Paper Reproduction
-
-The paper PDF can be reproduced from the LaTeX source files located in:
-
-
-latex/
-### Requirements
-
-A LaTeX distribution is required, such as TeX Live.
-
-### Build Instructions
-
-Navigate to the LaTeX directory:
-
-```bash
-cd latex/release
-```
-Compile the paper:
-```bash
-
-pdflatex main2.tex
-bibtex main2
-pdflatex main2.tex
-pdflatex main2.tex
-```
-The generated PDF will be:
-main2.pdf
+## ✍️ Citation
