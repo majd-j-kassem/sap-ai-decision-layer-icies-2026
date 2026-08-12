@@ -187,17 +187,20 @@ The repository includes an API microservice demonstrating how predictions are se
 source .venv/bin/activate
 uvicorn src.api.decision_api:app --reload
 ```
-* **Interactive Docs URL:** [http://127.0.0](http://127.0.0)
+* **Interactive Docs URL, End Point(Draft):** [http://127.0.0.1:8000/docs]
 
 ### 2. SAP Decision Dashboard (Streamlit)
 To explore the interactive, human-in-the-loop simulation UI:
 
 ```bash
+# Run this in new terminal same root
 source .venv/bin/activate
 streamlit run dashboard/sap_dashboard.py
 ```
 * **Local Web URL:** [http://localhost:8501](http://localhost:8501)
 * **Features:** Dynamic risk category adjustment, SHAP explanation rendering, and human override logs.
+
+![Dashboard Interface Preview](image.png)
 
 ---
 
@@ -209,7 +212,7 @@ To compile the LaTeX source files of the paper, ensure you have a standard distr
 cd latex/release/
 latexmk -pdf paper_file.tex
 ```
-The compiled output will be generated as `paper_file.pdf`.
+The compiled output will be generated as `latex/release/paper_file.pdf`.
 
 ---
 
