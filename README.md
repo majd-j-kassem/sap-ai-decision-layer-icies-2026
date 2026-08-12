@@ -1,8 +1,5 @@
 # An Explainable AI Decision Layer for Human-in-the-loop SAP ERP Workflow Integration in Supply Chain Operations
 
-[![Conference](https://shields.io)](http://icies-conference.org)
-[![Python](https://shields.io)](https://python.org)
-[![Framework](https://shields.io)](https://streamlit.io)
 
 ## 📌 Repository Status
 
