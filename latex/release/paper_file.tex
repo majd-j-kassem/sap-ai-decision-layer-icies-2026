@@ -50,7 +50,7 @@
 Traditional statistical process control and enterprise systems are predominantly retrospective, limiting proactive operational intervention. This study presents an SAP-oriented predictive decision framework that integrates logistics transaction data, supervised machine learning, probabilistic risk estimation, human-in-the-loop decision control, SAP-oriented workflow simulation, and cost-sensitive economic evaluation. Using 180,519 logistics observations from the DataCo Supply Chain dataset, the framework evaluates Logistic Regression, CART, Random Forest, XGBoost, and LightGBM models. Random Forest achieved the highest cross-validated ROC-AUC performance, while calibrated prediction probabilities were transformed into operational risk levels to support decision-making. The proposed decision layer converts predictive outputs into interpretable risk states, recommended actions, human review processes, workflow execution, and economic evaluation. Experimental results demonstrate that integrating predictive analytics with SAP-oriented decision processes can improve operational intervention capability and provide measurable business value. The study highlights the importance of bridging machine learning predictions with explainable and human-centered enterprise decision workflows.
 \end{abstract}
 
-\keywords{SAP ERP, IIoT Data Integration, Explainable Artificial Intelligence, Human-in-the-Loop Decision Making, Predictive Analytics, Machine Learning, Operational Optimization, Enterprise Systems}
+\keywords{SAP ERP, Data Integration, Explainable Artificial Intelligence, Human-in-the-Loop Decision Making, Predictive Analytics, Machine Learning, Operational Optimization, Enterprise Systems}
 
 \maketitle
 
@@ -1029,6 +1029,9 @@ transforming logistics predictions into risk-based decisions, economic
 assessments, human-review states, and SAP-oriented workflow records.
 The study does not establish the effectiveness of a production SAP
 integration or of human decision-making with real operational users.
+\section{Conclusion}
+
+This paper demonstrated a simulated framework for translating predictive logistics analytics into structured, risk-based operational decisions within enterprise systems. By integrating machine learning classification, probability calibration, economic sensitivity analysis, and selective human review into an SAP-oriented workflow simulation, the study established a traceable pathway from transaction-level prediction to operational execution. All source code, simulation scripts, and data processing pipelines used to generate the results and figures in this study are publicly available for reproducibility at \url{https://github.com/majdkassem/ICIES_2026_Explainable_AI_SAP}. Future work will focus on validating these components within live production environments and evaluating human-in-the-loop decision-making dynamics with real operational users.
 
 \bibliographystyle{ACM-Reference-Format}
 \bibliography{references}
