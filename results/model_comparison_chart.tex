@@ -14,7 +14,12 @@
     xtick=data,
     ymin=0.72,
     ymax=0.74,
-    nodes near coords,
+        nodes near coords={
+        \pgfmathprintnumber[
+            fixed,
+            precision=4
+        ]{\pgfplotspointmeta}
+    },
     nodes near coords align={vertical},
     x tick label style={
         rotate=45,
