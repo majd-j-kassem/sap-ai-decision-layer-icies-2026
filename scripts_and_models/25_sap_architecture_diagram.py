@@ -5,34 +5,40 @@ OUTPUT_PNG = "results/sap_architecture_diagram.png"
 OUTPUT_PDF = "results/sap_architecture_diagram.pdf"
 
 
-def add_box(ax, x, y, w, h, title, body):
+def add_box(ax, x, y, w, h, title, body, facecolor, edgecolor):
     box = FancyBboxPatch(
         (x, y), w, h,
         boxstyle="round,pad=0.04,rounding_size=0.08",
         linewidth=1.5,
+        facecolor=facecolor,
+        edgecolor=edgecolor,
     )
     ax.add_patch(box)
 
     ax.text(
         x + w / 2,
-        y + h * 0.68,
+        y + h * 0.72,
         title,
         ha="center",
         va="center",
-        fontsize=11,
+        fontsize=10,
         fontweight="bold",
+        color="#243247",
+        linespacing=1.0,
+        wrap=True,
     )
 
     ax.text(
         x + w / 2,
-        y + h * 0.30,
+        y + h * 0.27,
         body,
         ha="center",
         va="center",
-        fontsize=8.5,
+        fontsize=8,
+        color="#243247",
+        linespacing=1.2,
+        wrap=True,
     )
-
-
 def add_arrow(ax, x1, y1, x2, y2):
     ax.add_patch(
         FancyArrowPatch(
@@ -52,48 +58,56 @@ def main():
     ax.set_ylim(0, 8)
     ax.axis("off")
 
+        # Top row: data, prediction, decision, human review, SAP workflow
     add_box(
         ax, 0.4, 5.8, 2.0, 1.1,
         "Data Layer",
         "DataCo / IIoT\nOrder & operational data",
+        "#DCEAF7", "#8BAAC8",
     )
 
     add_box(
         ax, 3.0, 5.8, 2.0, 1.1,
         "ML Prediction",
         "LightGBM / XGBoost\nLate-delivery probability",
+        "#DCEAF7", "#8BAAC8",
     )
 
     add_box(
         ax, 5.6, 5.8, 2.2, 1.1,
         "Decision Layer",
         "Risk classification\nLOW / MEDIUM / HIGH",
+        "#DDF1E5", "#8BB99B",
     )
 
     add_box(
         ax, 8.4, 5.8, 2.2, 1.1,
-        "Human-in-the-Loop",
+        "Human-in-the-\nLoop",
         "Review / approve /\noverride",
+        "#FCEBCB", "#D5B16A",
     )
 
     add_box(
         ax, 11.1, 5.8, 2.3, 1.1,
         "SAP Workflow",
         "SAP-oriented action\n& process routing",
+        "#E8E1F5", "#A99BCB",
     )
 
+    # Bottom row: economic evaluation and audit
     add_box(
         ax, 5.6, 2.9, 2.2, 1.1,
         "Economic Layer",
         "Cost-sensitive decision\n& break-even analysis",
+        "#E9EDF2", "#A8B2BF",
     )
 
     add_box(
         ax, 8.4, 2.9, 2.2, 1.1,
         "Audit Layer",
         "Decision status\n& workflow audit trail",
+        "#E9EDF2", "#A8B2BF",
     )
-
     add_arrow(ax, 2.4, 6.35, 3.0, 6.35)
     add_arrow(ax, 5.0, 6.35, 5.6, 6.35)
     add_arrow(ax, 7.8, 6.35, 8.4, 6.35)
