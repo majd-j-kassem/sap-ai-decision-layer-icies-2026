@@ -1,2 +1,2 @@
-model,brier_score,expected_calibration_error,test_samples
-LightGBM,0.19406843835027676,0.004641521825789233,36104
+model,brier_score,expected_calibration_error,test_samples,ece_bins,evaluation
+LightGBM,0.19565231560561974,0.006748978147934195,36104,10,holdout

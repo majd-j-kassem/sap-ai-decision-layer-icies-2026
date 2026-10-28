@@ -1,22 +1,45 @@
+
 import os
-import joblib
 import numpy as np
 import pandas as pd
 
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import brier_score_loss
 from sklearn.calibration import calibration_curve
+from sklearn.compose import ColumnTransformer
+from sklearn.impute import SimpleImputer
+from sklearn.pipeline import Pipeline
+from sklearn.preprocessing import OneHotEncoder
+
+from lightgbm import LGBMClassifier
 
 
 DATA_PATH = "data/DataCoSupplyChainDataset.csv"
-MODEL_PATH = "models/lightgbm_model.joblib"
 
 OUTPUT_PATH = "results/calibration_analysis.csv"
 SUMMARY_PATH = "results/calibration_summary.csv"
 LATEX_PATH = "results/table_calibration.tex"
 
 
+CATEGORICAL_FEATURES = [
+    "Shipping Mode",
+    "Market",
+    "Order Region",
+]
+
+NUMERIC_FEATURES = [
+    "Order Item Quantity",
+    "Product Price",
+]
+
+FEATURES = CATEGORICAL_FEATURES + NUMERIC_FEATURES
+TARGET = "Late_delivery_risk"
+
+
 def expected_calibration_error(y_true, probabilities, n_bins=10):
+    y_true = np.asarray(y_true)
+    probabilities = np.asarray(probabilities)
+
     bins = np.linspace(0.0, 1.0, n_bins + 1)
     ece = 0.0
 
@@ -32,27 +55,81 @@ def expected_calibration_error(y_true, probabilities, n_bins=10):
                 & (probabilities < bins[i + 1])
             )
 
-        if mask.sum() == 0:
+        if not mask.any():
             continue
 
         confidence = probabilities[mask].mean()
-        accuracy = y_true[mask].mean()
+        observed_rate = y_true[mask].mean()
 
         ece += (
             mask.sum() / len(y_true)
-        ) * abs(confidence - accuracy)
+        ) * abs(confidence - observed_rate)
 
     return ece
 
 
+def build_preprocessor():
+    categorical_pipeline = Pipeline(
+        steps=[
+            (
+                "imputer",
+                SimpleImputer(strategy="most_frequent"),
+            ),
+            (
+                "onehot",
+                OneHotEncoder(
+                    handle_unknown="ignore",
+                    sparse_output=False,
+                ),
+            ),
+        ]
+    )
+
+    numeric_pipeline = Pipeline(
+        steps=[
+            (
+                "imputer",
+                SimpleImputer(strategy="median"),
+            ),
+        ]
+    )
+
+    return ColumnTransformer(
+        transformers=[
+            (
+                "categorical",
+                categorical_pipeline,
+                CATEGORICAL_FEATURES,
+            ),
+            (
+                "numeric",
+                numeric_pipeline,
+                NUMERIC_FEATURES,
+            ),
+        ]
+    )
+
+
+def build_lightgbm():
+    return LGBMClassifier(
+        n_estimators=300,
+        max_depth=6,
+        learning_rate=0.05,
+        num_leaves=31,
+        subsample=0.8,
+        colsample_bytree=0.8,
+        objective="binary",
+        random_state=42,
+        n_jobs=-1,
+        verbosity=-1,
+    )
+
+
 def main():
-    print("=== Calibration Analysis ===")
+    print("=== Independent Holdout Calibration Analysis ===")
 
     if not os.path.exists(DATA_PATH):
         raise FileNotFoundError(DATA_PATH)
-
-    if not os.path.exists(MODEL_PATH):
-        raise FileNotFoundError(MODEL_PATH)
 
     os.makedirs("results", exist_ok=True)
 
@@ -61,20 +138,18 @@ def main():
         encoding="latin1",
     )
 
-    target = "Late_delivery_risk"
-
-    features = [
-        "Shipping Mode",
-        "Market",
-        "Order Region",
-        "Order Item Quantity",
-        "Product Price",
+    missing = [
+        col for col in FEATURES + [TARGET]
+        if col not in df.columns
     ]
+    if missing:
+        raise ValueError(f"Missing columns: {missing}")
 
-    X = df[features]
-    y = df[target]
+    X = df[FEATURES].copy()
+    y = df[TARGET].astype(int)
 
-    _, X_test, _, y_test = train_test_split(
+    # Same holdout split as the training script
+    X_train, X_test, y_train, y_test = train_test_split(
         X,
         y,
         test_size=0.20,
@@ -82,8 +157,17 @@ def main():
         stratify=y,
     )
 
-    model = joblib.load(MODEL_PATH)
+    # Train only on the 80% training partition
+    model = Pipeline(
+        steps=[
+            ("preprocessor", build_preprocessor()),
+            ("model", build_lightgbm()),
+        ]
+    )
 
+    model.fit(X_train, y_train)
+
+    # Evaluate on the untouched 20% holdout partition
     probabilities = model.predict_proba(X_test)[:, 1]
 
     brier = brier_score_loss(
@@ -105,26 +189,26 @@ def main():
     )
 
     print("\n=== Calibration Metrics ===")
-    print(f"Brier Score : {brier:.6f}")
-    print(f"ECE         : {ece:.6f}")
-
-    print("\n=== Calibration Curve ===")
+    print(f"Training samples: {len(y_train)}")
+    print(f"Test samples    : {len(y_test)}")
+    print(f"Brier Score     : {brier:.6f}")
+    print(f"ECE (10 bins)   : {ece:.6f}")
 
     rows = []
+
+    print("\n=== Calibration Curve ===")
 
     for i, (predicted, observed) in enumerate(
         zip(mean_predicted, fraction_positive),
         start=1,
     ):
-        calibration_error = abs(
-            predicted - observed
-        )
+        error = abs(predicted - observed)
 
         print(
             f"Bin {i:02d} | "
             f"Predicted={predicted:.4f} | "
             f"Observed={observed:.4f} | "
-            f"Error={calibration_error:.4f}"
+            f"Error={error:.4f}"
         )
 
         rows.append(
@@ -132,19 +216,17 @@ def main():
                 "bin": i,
                 "mean_predicted_probability": predicted,
                 "observed_frequency": observed,
-                "absolute_calibration_error": calibration_error,
+                "absolute_calibration_error": error,
             }
         )
 
     calibration_df = pd.DataFrame(rows)
 
-    # Save CSV calibration data
     calibration_df.to_csv(
         OUTPUT_PATH,
         index=False,
     )
 
-    # Save calibration summary
     summary = pd.DataFrame(
         [
             {
@@ -152,6 +234,8 @@ def main():
                 "brier_score": brier,
                 "expected_calibration_error": ece,
                 "test_samples": len(y_test),
+                "ece_bins": 10,
+                "evaluation": "holdout",
             }
         ]
     )
@@ -161,7 +245,6 @@ def main():
         index=False,
     )
 
-    # Generate LaTeX table
     latex_df = calibration_df.rename(
         columns={
             "bin": "Bin",
